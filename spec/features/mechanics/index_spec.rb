@@ -10,14 +10,14 @@ RSpec.describe 'mechanics index page' do
 
   it "lists all mechanic names on the index page" do
     visit "/mechanics"
-    expect(page).to have_content("Manny")
-    expect(page).to have_content("Moe")
-    expect(page).to have_content("Jack")
+    expect(page).to have_content(@mechanic_1.name)
+    expect(page).to have_content(@mechanic_2.name)
+    expect(page).to have_content(@mechanic_3.name)
 
-    expect(page).to have_content("Years Experience: 10")
-    expect(page).to have_content("Years Experience: 15")
-    expect(page).to have_content("Years Experience: 20")
+    expect(page).to have_content("Years Experience: #{@mechanic_1.experience}")
+    expect(page).to have_content("Years Experience: #{@mechanic_2.experience}")
+    expect(page).to have_content("Years Experience: #{@mechanic_3.experience}")
 
-    expect(page).to have_content("Average Experience: 15")
+    expect(page).to have_content("Average Experience: #{Mechanic.average_experience}")
   end
 end
