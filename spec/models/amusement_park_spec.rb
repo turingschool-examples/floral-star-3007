@@ -14,5 +14,13 @@ RSpec.describe AmusementPark do
 
       expect(park.alphabetical_rides).to eq([ride1, ride3, ride2])
     end
+
+    it 'can get average thrills' do
+      park = AmusementPark.create!(name: 'Yada Thrills', price_of_admission: 4)
+      ride1 = park.rides.create!(name: 'Hurler', thrill_rating: 10, open: true)
+      ride2 = park.rides.create!(name: 'Tosser', thrill_rating: 5, open: true)
+
+      expect(park.average_thrill).to eq(7.5)
+    end
   end
 end
