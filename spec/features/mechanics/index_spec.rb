@@ -20,6 +20,8 @@ RSpec.describe 'mechanic index page' do
     expect(page).to have_content(@mech1.years_experience)
     expect(page).to have_content(@mech2.name)
     expect(page).to have_content(@mech2.years_experience)
+    expect(page).to have_content(@mech3.name)
+    expect(page).to have_content(@mech3.years_experience)
   end
 
   it 'shows average years experience' do
