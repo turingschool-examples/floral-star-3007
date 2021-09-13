@@ -12,7 +12,7 @@ describe 'amusement park show page' do
   end
   
   it 'lists park information, rides, and average thrill rating' do
-    save_and_open_page
+    
     expect(page).to have_content(@park.name)
     expect(page).to have_content(@park.price_of_admission)
     expect(page).to have_content(@ride_1.name)
