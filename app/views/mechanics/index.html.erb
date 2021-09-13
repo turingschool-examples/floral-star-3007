@@ -1,2 +1,7 @@
 <h1>All Mechanics</h1>
-<p><%= @mechanic.name %> has <%= @mechanic.years_experience %> years of experience</p>
+<% @mechanic.each do |mech| %>
+  <%= mech.name %>
+<% end %> has 
+<% @mechanic.each do |mech| %> 
+  <%= mech.years_experience %>
+<% end %> years of experience
