@@ -5,7 +5,7 @@
     <p><%= ride.name %></p>
 <% end %>
 
-<%= form_with controller: :mechanic_rides, action: :create, local: true do |f| %>
+<%= form_with url: "/mechanics/#{@mechanic.id}", action: :add_ride, local: true do |f| %>
   <%= f.label :ride_id, "Assign Ride" %>
   <%= f.text_field :ride_id, :size => "10" %>
   <%= f.submit "Assign Ride" %>

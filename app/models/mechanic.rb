@@ -9,4 +9,5 @@ class Mechanic < ApplicationRecord
     def mech_rides_filter
         rides.where(open: true).order(thrill_rating: :asc)
     end
+
 end
