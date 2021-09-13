@@ -4,4 +4,9 @@ class MechanicsController < ApplicationController
     @mechanics = Mechanic.all
   end
 
-end 
+  def show
+    @mechanic = Mechanic.find(params[:id])
+    @rides = @mechanic.rides.open_rides_by_thrill_rating
+  end
+
+end
