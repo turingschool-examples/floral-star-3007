@@ -16,7 +16,6 @@ RSpec.describe 'Mechanic index', type: :feature do
       expect(page).to have_content("Steven")
       expect(page).to have_content(15)
       expect(page).to have_content(7)
-      # expect(page).to have_content(11)
     end
   end
 end

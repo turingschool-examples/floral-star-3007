@@ -11,7 +11,7 @@ describe Mechanic, type: :model do
     it { should validate_presence_of(:years_of_experience) }
   end
 
-  describe 'scopes' do
+  describe 'methods' do
     describe 'average years of experience' do
       xit 'returns average years of experience' do
         mechanic1 = Mechanic.create!(name: "Jason", years_of_experience: 15)
