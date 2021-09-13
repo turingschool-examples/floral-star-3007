@@ -30,7 +30,7 @@ RSpec.describe 'the mechanics show page' do
     visit "/mechanics/#{@mech_1.id}"
 
     within('#rides') do
-      expect(page).to have_content("Bob's Rides:")
+      expect(page).to have_content("Current rides Bob is working on:")
 
       expect(page).to have_content('Kiddie Coaster')
       expect(page).to have_content('Rollercoaster')
