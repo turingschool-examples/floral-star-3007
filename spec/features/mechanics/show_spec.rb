@@ -29,6 +29,20 @@ RSpec.describe 'Mechanics#showpage' do
 
     expect(page).to have_content(@mj.name)
     expect(page).to have_content(@mj.years_experience)
-    expect(page).to not_have_content(@st.name)
+    expect(page).to_not have_content(@st.name)
+  end
+
+  it 'can show the OPEN rides' do
+
+    expect(page).to have_content('Open Rides:')
+    expect(page).to have_content(@ferris_wheel.name)
+    expect(page).to have_content(@ferris_wheel.thrill_rating)
+    expect(page).to_not have_content(@gut_spiller.name)
+  end
+
+  it 'can display the rides in order of highest thrill rating' do
+
+    expect(@batman.name).to appear_before(@gut_spiller.name)
+    expect(@beast.name).to appear_before(@ferris_wheel.name)
   end
 end
