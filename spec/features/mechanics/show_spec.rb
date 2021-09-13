@@ -37,14 +37,13 @@ RSpec.describe 'mechanics show page' do
     within("#rides") do
       expect(page).to_not have_content(@maverick.name)
     end
-    expect(page).to have_content("Add Ride for Repairs")
+    expect(page).to have_content("Add a ride to workload:")
     within("#new-ride") do
-      fill_in("Ride ID" with: "#{@maverick.id}")
+      fill_in("Ride Id", with: "#{@maverick.id}")
       click_on "Add Ride"
     end
 
-    expect(current_page).to eq("mechanics/#{@willie.id}")
-
+    expect(current_path).to eq("/mechanics/#{@willie.id}")
     within("#rides") do
       expect(page).to have_content(@maverick.name)
     end
