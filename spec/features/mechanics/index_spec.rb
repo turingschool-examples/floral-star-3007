@@ -23,6 +23,7 @@ RSpec.describe "mechanics index page" do
   end
 
   it 'shows all mechanics info' do
+    save_and_open_page
     expect(page).to have_content("All Mechanics")
     expect(page).to have_content(@m1.name)
     expect(page).to have_content(@m1.years_of_experience)
@@ -32,6 +33,6 @@ RSpec.describe "mechanics index page" do
     expect(page).to have_content(@m3.years_of_experience)
     expect(page).to have_content(@m4.name)
     expect(page).to have_content(@m4.years_of_experience)
-    expect(page).to have_content("Average years of experience: 6")
+    expect(page).to have_content("Mechanic's average years of experience: 6")
   end
 end
