@@ -1,5 +1,5 @@
 <h1><%= @mechanic.name %></h1>
-<p>Average years of experience: <%= @mechanic.experience %></p>
+<p>Years of experience: <%= @mechanic.experience %></p>
 
 <h3>Rides</h3>
 <ul>
@@ -7,3 +7,10 @@
     <li><%= ride.name %></li>
   <% end %>
 </ul>
+
+<h2>Add a ride to workload</h2>
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :post, local: true do |form| %>
+  <%= form.label :ride_id %>
+  <%= form.text_field :ride_id %>
+  <%= form.submit "Submit" %>
+<% end %>
