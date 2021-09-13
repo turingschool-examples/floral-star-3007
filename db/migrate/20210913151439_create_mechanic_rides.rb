@@ -1,6 +1,6 @@
-class CreateMachanicRides < ActiveRecord::Migration[5.2]
+class CreateMechanicRides < ActiveRecord::Migration[5.2]
   def change
-    create_table :machanic_rides do |t|
+    create_table :mechanic_rides do |t|
       t.references :mechanic, foreign_key: true
       t.references :ride, foreign_key: true
 
