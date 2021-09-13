@@ -1,13 +1,5 @@
 require "rails_helper"
 
-# Story 1 - Mechanic Index Page
-#
-# As a user,
-# When I visit the mechanics index page
-# I see a header saying “All Mechanics”
-# And I see a list of all mechanic’s names and their years of experience
-# And I see the average years of experience across all mechanics
-
 RSpec.describe "Mechanic Index Page" do
   before(:each) do
     @six_flags = AmusementPark.create!(name: "Six Flags", price_of_admission: 49)
@@ -38,12 +30,17 @@ RSpec.describe "Mechanic Index Page" do
       expect(page).to have_content(@jon.years_experience)
       expect(page).to have_content(@kara.name)
       expect(page).to have_content(@kara.years_experience)
+
+      expect(page).to have_no_content(@roller.name)
+      expect(page).to have_no_content(@merry.name)
     end
 
     it "displays the average years of experience across all mechanics" do
       visit "/mechanics"
 
       expect(page).to have_content(9)
+      
+      expect(page).to have_no_content(10)
     end
   end
 end

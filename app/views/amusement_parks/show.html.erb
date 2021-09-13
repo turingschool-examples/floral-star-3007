@@ -3,11 +3,11 @@
 </h1>
 
 <h3>List of Rides in alphabetical order:</h3>
-<ul>
+<ol>
   <% @amusement_park.alphabetical_order.each do |ride|  %>
    <li><%= ride.name %></li>
   <% end %>
-</ul>
+</ol>
 
-<h3>Average thrill rating: <%= @amusement_park.average_thrill_rating %>/10
+<h3>Average hrill rating: <%= @amusement_park.average_thrill_rating %>/10
 </h3>

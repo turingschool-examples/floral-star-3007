@@ -23,17 +23,14 @@ RSpec.describe Mechanic do
 
   describe "#instance methods" do
     it "can get average years of experience" do
-
       expect(Mechanic.average_years_experience).to eq(9.5)
     end
 
     it "can get the names of rides that are neing working on" do
-
       expect(@jon.names_of_rides_working_on).to eq(["Merry Go Round"])
     end
 
     it "can order rides by thrill rating desc" do
-
       expect(@jon.thrill_rating_desc).to eq([@roller, @hammer])
     end
   end

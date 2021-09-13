@@ -22,12 +22,10 @@ RSpec.describe AmusementPark do
 
   describe "#instance methods" do
     it "can order all rides in that amusement park in alphabetical order" do
-
       expect(@six_flags.alphabetical_order).to eq([@hammer, @merry, @roller])
     end
 
     it "can get an average thrill rating of all rides in the park" do
-
       expect(@six_flags.average_thrill_rating).to eq(5)
     end
   end
