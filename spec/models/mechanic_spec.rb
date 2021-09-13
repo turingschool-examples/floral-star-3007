@@ -27,7 +27,7 @@ describe Mechanic do
       RideMechanic.create!(ride: ride_2, mechanic: khoi)
       RideMechanic.create!(ride: ride_3, mechanic: khoi)
 
-      expect(khoi.open_rides).to eq([ride_1, ride_3])
+      expect(khoi.workin_on).to eq([ride_1, ride_3])
     end
   end
 end
