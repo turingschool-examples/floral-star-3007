@@ -1,0 +1,7 @@
+<%= @mechanic.name %>
+<%= @mechanic.years_experience %>
+
+<h3>Rides</h3>
+<% @open_rides.each do |ride| %>
+  <%= ride.name %>
+<% end %>
