@@ -32,4 +32,21 @@ RSpec.describe 'mechanic show page' do
     expect(ride3.name).to appear_before(ride2.name)
   end
 
+  it 'story 3' do
+    mech = Mechanic.create!(name: "Janet", years_experience: 7)
+    park = AmusementPark.create!(name: 'Yada Thrills', price_of_admission: 4)
+    ride1 = park.rides.create!(name: 'Hurler', thrill_rating: 10, open: true)
+    ride2 = park.rides.create!(name: 'Lazy', thrill_rating: 1, open: true)
+
+    visit "/mechanics/#{mech.id}"
+
+    expect(page).to have_content("Add ride")
+
+    fill_in('Add ride', with: @ride1.id)
+
+    click 'submit'
+
+    expect(current_path).to eq("/mechanics/#{mech.id}")
+    expect(page).to have_content(ride1.name)
+  end
 end
