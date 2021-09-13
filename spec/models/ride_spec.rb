@@ -6,6 +6,7 @@ RSpec.describe Ride do
     it { should have_many :mechanics}
     it { should have_many(:mechanics).through(:ride_mechanics)}
   end
+
   before :each do
     @park = AmusementPark.create!(name: "Universal", price_of_admission: 120)
     @m1 = Mechanic.create!(name: "George", years_of_experience: 7)
@@ -26,6 +27,6 @@ RSpec.describe Ride do
   end
 
   it 'only shows open rides' do
-    expect(Ride.open?).to eq([@r1, @r2, @r4])
+    expect(Ride.open_rides(@m1.id)).to eq([@r1.name, @r2.name, @r4.name])
   end
 end

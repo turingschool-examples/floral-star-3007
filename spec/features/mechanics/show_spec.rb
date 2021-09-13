@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "mechanics index page" do
+RSpec.describe "mechanics show page" do
   before :each do
     @park = AmusementPark.create!(name: "Universal", price_of_admission: 120)
     @m1 = Mechanic.create!(name: "George", years_of_experience: 7)
@@ -9,29 +9,27 @@ RSpec.describe "mechanics index page" do
     @m4 = Mechanic.create!(name: "Georgina", years_of_experience: 10)
     @r1 = @park.rides.create!(name: "The Hulk", thrill_rating: 7, open: true)
     @r2 = @park.rides.create!(name: "Hogwarts Castle", thrill_rating: 6, open: true)
-    @r3 = @park.rides.create!(name: "Dueling Dragons", thrill_rating: 7, open: false)
+    @r3 = @park.rides.create!(name: "Dueling Dragons", thrill_rating: 8, open: false)
     @r4 = @park.rides.create!(name: "Spiderman", thrill_rating: 4, open: true)
     RideMechanic.create!(mechanic: @m1, ride:@r1)
     RideMechanic.create!(mechanic: @m1, ride:@r2)
-    RideMechanic.create!(mechanic: @m1, ride:@r4)
+    RideMechanic.create!(mechanic: @m1, ride:@r3)
     RideMechanic.create!(mechanic: @m2, ride:@r1)
     RideMechanic.create!(mechanic: @m2, ride:@r4)
     RideMechanic.create!(mechanic: @m3, ride:@r1)
     RideMechanic.create!(mechanic: @m3, ride:@r4)
 
-    visit '/mechanics'
   end
 
-  it 'shows all mechanics info' do
-    expect(page).to have_content("All Mechanics")
+  it 'has mechanic info' do
+    visit "/mechanics/#{@m1.id}"
     expect(page).to have_content(@m1.name)
     expect(page).to have_content(@m1.years_of_experience)
-    expect(page).to have_content(@m2.name)
-    expect(page).to have_content(@m2.years_of_experience)
+    expect(["'The Hulk', 'Hogwarts Castle'"])
+
+    visit "/mechanics/#{@m3.id}"
     expect(page).to have_content(@m3.name)
     expect(page).to have_content(@m3.years_of_experience)
-    expect(page).to have_content(@m4.name)
-    expect(page).to have_content(@m4.years_of_experience)
-    expect(page).to have_content("Mechanic's average years of experience: 6")
+    expect(["'The Hulk', 'Spiderman'"])
   end
 end
