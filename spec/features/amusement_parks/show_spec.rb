@@ -6,7 +6,7 @@ RSpec.describe 'amusement park show page' do
     @mechanic2 = Mechanic.create!(name: 'Jan', years_experience: 5)
     @park1 = AmusementPark.create!(name: 'Funtown', price_of_admission: 50.00)
     @park2 = AmusementPark.create!(name: 'Splashtown', price_of_admission: 70.00)
-    @ride1 = @mechanic1.rides.create!(name: 'Carousel', thrill_rating: '10', open: true, amusement_park_id: @park1.id)
+    @ride1 = @mechanic1.rides.create!(name: 'Alpine Swing', thrill_rating: '10', open: true, amusement_park_id: @park1.id)
     @ride2 = @mechanic1.rides.create!(name: 'Slide', thrill_rating: '20', open: true, amusement_park_id: @park1.id)
     @ride3 = @mechanic1.rides.create!(name: 'Bumper Cars', thrill_rating: '35', open: true, amusement_park_id: @park1.id)
     @ride4 = Ride.create!(name: 'Coaster', thrill_rating: '25', open: true, amusement_park_id: @park2.id)
