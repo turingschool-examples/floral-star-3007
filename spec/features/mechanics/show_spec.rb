@@ -25,4 +25,18 @@ RSpec.describe 'mechanic show page' do
     expect(page).to have_content(ride_2.name)
     #expect(page).to_not have_content(ride_3.name)
   end
+
+  it 'has a form to add a ride by its id for a mechanic' do
+    park = AmusementPark.create!(name: "Six Flags", price_of_admission: 30)
+    mechanic_1 = Mechanic.create!(name: "John", years_experience: 4)
+    ride_1 = Ride.create!(name: "Twister", thrill_rating: 5, open: true, amusement_park_id: park.id)
+
+    visit "/mechanics/#{mechanic_1.id}"
+
+    expect(page).to have_content("Add Ride")
+    fill_in :ride_id, with: ride_1.id
+    click_button "Submit"
+    expect(current_path).to eq("/mechanics/#{mechanic_1.id}")
+    expect(page).to have_content(ride_1.name)
+  end
 end
