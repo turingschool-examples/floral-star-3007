@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe AmusementPark do
+RSpec.describe Mechanic do
   before(:each) do
     @six_flags = AmusementPark.create!(name: "Six Flags", price_of_admission: 49)
 
@@ -16,17 +16,22 @@ RSpec.describe AmusementPark do
     MechanicRide.create!(mechanic: @jon, ride: @hammer)
   end
 
-  describe 'relationships' do
-    it { should have_many(:rides) }
+  describe "relationships" do
+    it { should have_many(:mechanic_rides) }
+    it { should have_many(:rides).through(:mechanic_rides) }
   end
 
   describe "#instance methods" do
-    it "can order all rides in that amusement park in alphabetical order" do
-      expect(@six_flags.alphabetical_order).to eq([@hammer, @merry, @roller])
+    it "can get average years of experience" do
+      expect(Mechanic.average_years_experience).to eq(9.5)
     end
 
-    it "can get an average thrill rating of all rides in the park" do
-      expect(@six_flags.average_thrill_rating).to eq(5)
+    it "can get the names of rides that are neing working on" do
+      expect(@jon.names_of_rides_working_on).to eq(["Merry Go Round"])
+    end
+
+    it "can order rides by thrill rating desc" do
+      expect(@jon.thrill_rating_desc).to eq([@roller, @hammer])
     end
   end
 end
