@@ -30,4 +30,9 @@ RSpec.describe 'Mechanic show page' do
     expect(page).to_not have_content(@ride_2.name)
     expect(page).to_not have_content(@ride_3.name)
   end
+
+  it 'lists rides by thrill order descending' do
+    visit "/mechanics/#{@kara.id}"
+    expect(@ride_2.name).to appear_before(@ride_1.name)
+  end
 end

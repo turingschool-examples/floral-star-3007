@@ -6,4 +6,8 @@ class Ride < ApplicationRecord
   def self.open_only
     where('open = true')
   end
+
+  def self.rating_order
+    order(thrill_rating: :desc)
+  end
 end
