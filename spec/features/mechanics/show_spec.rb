@@ -35,7 +35,6 @@ RSpec.describe "mechanic show page" do
     visit "/mechanics/#{@martin.id}"
     fill_in :ride_id, with: "#{@drop.id}"
     click_on "Submit"
-    save_and_open_page
     expect(current_path).to eq("/mechanics/#{@martin.id}")
     expect(page).to have_content(@drop.name)
     expect(page).to have_content(@drop.thrill_rating)

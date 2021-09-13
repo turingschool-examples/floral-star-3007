@@ -28,5 +28,26 @@ RSpec.describe Ride do
 
       expect(Ride.open_rides).to eq([@beast, @diamond, @adventure])
     end
+
+    it 'lists rides alphabetically' do
+      @ki = AmusementPark.create!(name: "King's Island", price_of_admission: 45)
+      @beast = @ki.rides.create!(name: "The Beast", thrill_rating: 4, open: true)
+      @diamond = @ki.rides.create!(name: "Diamond Back", thrill_rating: 5, open: true)
+      @racers = @ki.rides.create!(name: "The Racers", thrill_rating: 2, open: false)
+      @adventure = @ki.rides.create!(name: "Adventure Express", thrill_rating: 3, open: true)
+
+      expect(Ride.alpha_rides).to eq([@adventure, @diamond, @beast, @racers])
+    end
+
+    it 'averages thrill rating' do
+      @ki = AmusementPark.create!(name: "King's Island", price_of_admission: 45)
+      @beast = @ki.rides.create!(name: "The Beast", thrill_rating: 4, open: true)
+      @diamond = @ki.rides.create!(name: "Diamond Back", thrill_rating: 5, open: true)
+      @racers = @ki.rides.create!(name: "The Racers", thrill_rating: 2, open: false)
+      @adventure = @ki.rides.create!(name: "Adventure Express", thrill_rating: 3, open: true)
+      @swings = @ki.rides.create!(name: "Big Swings", thrill_rating: 1, open: true)
+
+      expect(Ride.average_thrill).to eq(3)
+    end
   end
 end

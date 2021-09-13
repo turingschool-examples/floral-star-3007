@@ -10,4 +10,12 @@ class Ride < ApplicationRecord
   def self.open_rides
     where(open: true)
   end
+
+  def self.alpha_rides
+    order(:name)
+  end
+
+  def self.average_thrill
+    average(:thrill_rating)
+  end
 end
