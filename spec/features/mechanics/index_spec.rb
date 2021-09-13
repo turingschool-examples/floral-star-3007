@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the mechanics show page' do
+RSpec.describe 'the mechanics index page' do
 
     before :each do
       @mech_1 = Mechanic.create!(name: "Bob", years_experience: 7)
@@ -26,10 +26,9 @@ RSpec.describe 'the mechanics show page' do
 
   it "displays the average years of experience for all mechanics" do
     visit '/mechanics'
-    
+
     within('#stats') do
       expect(page).to have_content("Average Experience: 9.5")
     end
-
   end
 end
