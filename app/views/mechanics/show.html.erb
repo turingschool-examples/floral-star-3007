@@ -1,0 +1,9 @@
+<h3><%= @mechanic.name %></h3>
+<p>Years Experience: <%= @mechanic.yrs_xp %></p>
+<p id="rides">
+<% @ordered_rides.each do |ride| %>
+  <% if ride.open %>
+    <%= ride.name %>
+  <% end %>
+<% end %>
+</p>
