@@ -15,11 +15,12 @@ describe 'mechanics show page' do
   end
   
   it 'lists mechanic name, exp, and rides currently working on' do
+    save_and_open_page
     expect(page).to have_content(@khoi.name)
     expect(page).to have_content(@khoi.experience)
     expect(page).to have_content(@ride_1.name)
     expect(page).to_not have_content(@ride_2.name)
     expect(page).to have_content(@ride_3.name)
-    expect(@ride_1).to appear_before(@ride_3.name)
+    expect(@ride_1.name).to appear_before(@ride_3.name)
   end
 end
