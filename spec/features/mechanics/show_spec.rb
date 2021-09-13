@@ -24,7 +24,15 @@ RSpec.describe 'Mechanic Show Page' do
     end
 
     it 'only shows open rides' do
+      visit mechanic_path(@sara)
 
+      MechanicRide.create!(ride: @best_ride, mechanic: @sara)
+      MechanicRide.create!(ride: @scariest_ride, mechanic: @sara)
+      MechanicRide.create!(ride: @closed_ride, mechanic: @sara)
+
+      expect(page).to have_content(@sara.name)
+      expect(page).to have_content(@sara.experience)
+      expect(@sara.rides).to eq([@best_ride, @scariest_ride])
     end
 
     it 'lists the rides by desc thrill rating' do
