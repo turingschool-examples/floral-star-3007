@@ -8,4 +8,5 @@ class MechanicsController < ApplicationController
     @mechanic = Mechanic.find(params[:id])
     @rides = Ride.open_rides(params[:id])
   end
+
 end

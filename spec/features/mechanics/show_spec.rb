@@ -32,4 +32,14 @@ RSpec.describe "mechanics show page" do
     expect(page).to have_content(@m3.years_of_experience)
     expect(["'The Hulk', 'Spiderman'"])
   end
+
+  it 'has a form to add ride to workload' do
+    visit "/mechanics/#{@m1.id}"
+save_and_open_page
+    fill_in(:ride_id, with: @r3.id)
+    click_button("Submit")
+    expect(current_path).to eq("/ride_mechanic/#{@m1.id}")
+
+    expect(page).to have_content(@r3.name)
+  end
 end
