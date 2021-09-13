@@ -11,6 +11,16 @@ RSpec.describe Mechanic do
     it {should have_many(:rides).through(:mechanic_rides)}
   end
 
+  describe 'class methods' do
+    it 'returns the average experience of all mechanics' do
+      mechanic_1 = Mechanic.create!(name: "Sarah", years_experience: 7)
+      mechanic_1 = Mechanic.create!(name: "Tim", years_experience: 4)
+      mechanic_1 = Mechanic.create!(name: "John", years_experience: 2)
+
+      expect(Mechanic.average_experience).to eq(4.33)
+    end
+  end
+
   describe 'instance methods' do
     it 'orders open rides by thrill rating' do
       park = AmusementPark.create!(name: "Six Flags", price_of_admission: 30)
