@@ -10,7 +10,7 @@ RSpec and Shoulda-Matchers have been installed and set up.
 
 1. fork this repo
 2. clone your fork
-3. `git clone <paste_repo>`
+3. `git clone <paste_repo>` 
 4. `cd floral-star-3007`
 5. `bundle install`
 
