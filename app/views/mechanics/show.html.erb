@@ -1,3 +1,8 @@
-Mechanic Name: <%= @mechanic.name %>
-Mechanic's Years of Experience: <%= @mechanic.experience %>
-Open rides currently working on: <%= @mechanic.rides %>
+Mechanic Name: <%= @mechanic.name %><br>
+Mechanic's Years of Experience: <%= @mechanic.experience %><br>
+<p>Open rides currently working on:</p>
+<% @mechanic.rides.each do |ride| %>
+  <% if ride.open == true %>
+    <%= ride.name %>
+  <% end %>
+<% end %>
