@@ -35,4 +35,13 @@ RSpec.describe 'Mechanic show page' do
     visit "/mechanics/#{@kara.id}"
     expect(@ride_2.name).to appear_before(@ride_1.name)
   end
+
+  it 'has a form to add a new ride to the mechanic' do
+    visit "/mechanics/#{@sam.id}"
+    expect(page).to have_button('Add Ride')
+    fill_in 'ride_id', with: "#{@ride_2.id}"
+    click_button('Add Ride')
+    expect(page).to have_content(@ride_2.name)
+    expect(current_path).to eq("/mechanics/#{@sam.id}")
+  end
 end
