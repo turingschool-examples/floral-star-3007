@@ -23,4 +23,3 @@ RSpec.describe 'the mechanics index page' do
     expect(page).to have_content("14 years")
   end
 end
-end
