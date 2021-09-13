@@ -6,3 +6,11 @@
     <%= ride.name %>
   <% end %>
 <% end %>
+
+<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, local: true do |f| %>
+
+  <%= f.label "Add ride" %>
+  <%= f.text_field "Add ride" %>
+  <%= f.submit "submit" %>
+
+<% end %>
