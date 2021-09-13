@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'amusement park show' do
   let!(:park)  { AmusementPark.create(name: 'Six Flags', price_of_admission: 20) }
-  let!(:ride1) { park.rides.create!(name: '2F2F', thrill_rating: 6, open: true, amusement_park_id: park.id) }
+  let!(:ride1) { park.rides.create!(name: '2F2F', thrill_rating: 6, open: true) }
   let!(:ride2) { park.rides.create!(name: 'Splash Town', thrill_rating: 2, open: false) }
   let!(:ride3) { park.rides.create!(name: 'Bungie Jump', thrill_rating: 10, open: true) }
 
