@@ -1,10 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Ride do
-  describe 'relationships' do
-    it { should belong_to(:amusement_park) }
-    it { should have_many :mechanics}
-    it { should have_many(:mechanics).through(:ride_mechanics)}
+RSpec.describe Mechanic do
+  describe "relationships" do
+    it { should have_many(:ride_mechanics)}
+    it { should have_many(:rides).through(:ride_mechanics)}
   end
 
   before :each do
@@ -26,7 +25,7 @@ RSpec.describe Ride do
     RideMechanic.create!(mechanic: @m3, ride:@r4)
   end
 
-  it 'only shows open rides' do
-    expect(Ride.open_rides(@m1.id)).to eq([@r1.name, @r2.name, @r4.name])
+  it 'has average years of experience' do
+    expect(Mechanic.average_years).to eq(6)
   end
 end

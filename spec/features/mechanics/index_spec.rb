@@ -1,12 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Ride do
-  describe 'relationships' do
-    it { should belong_to(:amusement_park) }
-    it { should have_many :mechanics}
-    it { should have_many(:mechanics).through(:ride_mechanics)}
-  end
-
+RSpec.describe "mechanics index page" do
   before :each do
     @park = AmusementPark.create!(name: "Universal", price_of_admission: 120)
     @m1 = Mechanic.create!(name: "George", years_of_experience: 7)
@@ -24,9 +18,20 @@ RSpec.describe Ride do
     RideMechanic.create!(mechanic: @m2, ride:@r4)
     RideMechanic.create!(mechanic: @m3, ride:@r1)
     RideMechanic.create!(mechanic: @m3, ride:@r4)
+
+    visit '/mechanics'
   end
 
-  it 'only shows open rides' do
-    expect(Ride.open_rides(@m1.id)).to eq([@r1.name, @r2.name, @r4.name])
+  it 'shows all mechanics info' do
+    expect(page).to have_content("All Mechanics")
+    expect(page).to have_content(@m1.name)
+    expect(page).to have_content(@m1.years_of_experience)
+    expect(page).to have_content(@m2.name)
+    expect(page).to have_content(@m2.years_of_experience)
+    expect(page).to have_content(@m3.name)
+    expect(page).to have_content(@m3.years_of_experience)
+    expect(page).to have_content(@m4.name)
+    expect(page).to have_content(@m4.years_of_experience)
+    expect(page).to have_content("Mechanic's average years of experience: 6")
   end
 end
