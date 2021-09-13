@@ -39,4 +39,16 @@ RSpec.describe 'the mechanics show page' do
 
     expect(@ride2.name).to appear_before(@ride1.name)
   end
+
+  it "can add a ride to the mechanic's experience" do
+    @mech1.rides << @ride1
+
+    visit mechanic_path(@mech1)
+
+    fill_in "Add a ride to workload:", with: @ride2.id
+    click_on "submit"
+
+    expect(page).to have_content(@ride2.name)
+    expect(@mech1.rides).to include(@ride2)
+  end
 end
