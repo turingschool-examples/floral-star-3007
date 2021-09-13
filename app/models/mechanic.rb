@@ -6,7 +6,7 @@ class Mechanic < ApplicationRecord
     average(:experience)
   end
 
-  def open_rides
+  def working_on
     Ride.joins(:mechanics).where(rides: {open: true}).order(thrill_rating: :desc)
   end
 end
