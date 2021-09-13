@@ -30,7 +30,7 @@ RSpec.describe "Mechanic Show Page" do
       expect(page).to have_no_content(@kara.years_experience)
     end
 
-    it "displays the names of the rides they're working on" do
+    it "displays the names of the rides they're working on by that mechanic" do
       visit "/mechanics/#{@jon.id}"
 
       within("#worked_on_rides") do
@@ -42,7 +42,7 @@ RSpec.describe "Mechanic Show Page" do
       end
     end
 
-    it "displays only the rides that are open" do
+    it "displays only the rides that are open for that mechanic" do
       visit "/mechanics/#{@jon.id}"
 
       within("#opened_rides") do
@@ -52,7 +52,7 @@ RSpec.describe "Mechanic Show Page" do
       end
     end
 
-    it "displays the rides listed by thrill rating in descending order" do
+    it "displays the rides listed by thrill rating in descending order by that machanic" do
       visit "/mechanics/#{@jon.id}"
 
       expect(@roller.name).to appear_before(@hammer.name)
