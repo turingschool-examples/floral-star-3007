@@ -16,5 +16,16 @@ RSpec.describe AmusementPark do
         expect(hpw.rides_alphabetically).to eq([ride1, ride3, ride2])
       end
     end
+
+    describe '.average_thrill' do
+      it 'averages the thrill rating' do
+        hpw = AmusementPark.create!(name: "Harry Potter World", price_of_admission: 20)
+        ride1 = hpw.rides.create!(name: "Ferris Wheel", thrill_rating: 2, open: true)
+        ride2 = hpw.rides.create!(name: "Tea Cups", thrill_rating: 3, open: false)
+        ride3 = hpw.rides.create!(name: "Roller Coaster", thrill_rating: 9, open: true)
+
+        expect(hpw.average_thrill.round(1)).to eq(4.7)
+      end
+    end
   end
 end
