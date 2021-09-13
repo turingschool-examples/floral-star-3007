@@ -4,6 +4,9 @@
 <% @mechanic.open_rides_desc_thrill.each do |ride| %>
   <p><%= ride.name %></p>
 <% end %>
+<% flash.each do |type, message| %>
+     <p><%= message %></p>
+<% end %>
 <p>Add a ride to workload: </p>
 <%= form_with url: '/ride_mechanics/new', method: :post, local: true do |form| %>
   <%= form.label :ride_id, "Ride Id" %>
