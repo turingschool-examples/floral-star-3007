@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'mechanic show page' do
+RSpec.describe 'mechanic index page' do
   it 'lists all of the mechanics names and years of experience and the average years experience' do
     mechanic1 = Mechanic.create!(name: "Gypsy", years_of_experience: 15)
     mechanic2 = Mechanic.create!(name: "Daisy", years_of_experience: 10)
     mechanic3 = Mechanic.create!(name: "Rosie", years_of_experience: 20)
-    
+
     visit '/mechanics'
     save_and_open_page
 
