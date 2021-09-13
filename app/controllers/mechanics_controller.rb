@@ -8,8 +8,8 @@ class MechanicsController < ApplicationController
   end
 
   private
-def mechanic_params
-  params.permit(:name, :experience)
-end
+  def mechanic_params
+    params.permit(:name, :experience)
+  end
 
 end
