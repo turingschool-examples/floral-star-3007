@@ -14,5 +14,16 @@ RSpec.describe 'Mechanic index page' do
 
   it ' displays the mechanics attributes' do
     visit "/mechanics"
+
+    expect(page).to have_content("All Mechanics")
+    expect(page).to have_content(@kara.name)
+    expect(page).to have_content(@kara.years_experience)
+    expect(page).to have_content(@sam.name)
+    expect(page).to have_content(@sam.years_experience)
+  end
+
+  it 'displays the average years of experience accross all mechanics' do
+    visit "/mechanics"
+    expect(page).to have_content("Average years of experience:#{Mechanic.average_years}")
   end
 end
