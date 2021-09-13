@@ -1,0 +1,13 @@
+<h1> <%= @mechanic.name %> </h1>
+<p>Years of Experience:<%= @mechanic.years_experience%> </p>
+<% @rides.each do |ride| %>
+<ul>
+  <li> Working On Ride:<%=ride.name%> </li>
+  <% end %>
+</ul>
+
+<%=form_with url: "/mechanics/#{@mechanic.id}", method: :patch, local: true do |form| %>
+<%=form.label :ride_id  %>
+<%=form.text_field :ride_id %>
+<%=form.submit 'Add Ride' %>
+<% end %>
