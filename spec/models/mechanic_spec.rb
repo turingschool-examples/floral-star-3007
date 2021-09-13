@@ -13,5 +13,15 @@ RSpec.describe Mechanic, type: :model do
 
       expect(Mechanic.average_years_of_experience).to eq(10)
     end
+    it "#rides_open" do
+      amusement_park = AmusementPark.create!(name: 'Six Flags', price_of_admission: 2)
+      mechanic = Mechanic.create!(name: 'Ted', years_experience: 9)
+      ride_1 = amusement_park.rides.create!(name: 'mangler', thrill_rating: 9, open: true)
+      ride_2 = amusement_park.rides.create!(name: 'spiderman', thrill_rating: 11, open: true)
+      ride_3 = amusement_park.rides.create!(name: 'Batman', thrill_rating: 10, open: false)
+
+
+      expect(mechanic.rides_open).to eq([ride_2, ride_1])
+    end
   end
 end
