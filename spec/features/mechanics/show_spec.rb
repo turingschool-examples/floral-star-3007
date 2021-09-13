@@ -60,6 +60,4 @@ RSpec.describe 'mechanic show page' do
     expect(current_path).to eq("/mechanics/#{@mechanic_2.id}")
     expect(page).to have_content(@river_cruise.name)
   end
-
-
 end
