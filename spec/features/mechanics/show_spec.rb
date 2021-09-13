@@ -1,13 +1,5 @@
 require "rails_helper"
 
-# Story 2 - Mechanic Show Page
-#
-# As a user,
-# When I visit a mechanic show page
-# I see their name, years of experience, and the names of rides they’re working on
-# And I only see rides that are open
-# And the rides are listed by thrill rating in descending order (most thrills first)
-
 RSpec.describe "Mechanic Show Page" do
   before(:each) do
     @six_flags = AmusementPark.create!(name: "Six Flags", price_of_admission: 49)
@@ -25,7 +17,7 @@ RSpec.describe "Mechanic Show Page" do
   end
 
   describe "#Story 2" do
-    it "displays the mechanic's name and years of experience"
+    it "displays the mechanic's name and years of experience" do
       visit "/mechanics/#{@jon.id}"
 
       expect(page).to have_content(@jon.name)
@@ -57,5 +49,20 @@ RSpec.describe "Mechanic Show Page" do
 
       expect(@roller.name).to appear_before(@hammer.name)
     end
+  end
 
+  describe "#Story 3" do
+    it "has a form to add a ride to a mechanic's workload" do
+      visit "/mechanics/#{@jon.id}"
+
+      expect(page).to have_field("Ride Id:")
+      expect(page).to have_button("Submit")
+
+      fill_in :ride_id, with: @roller.id
+      click_button "Submit"
+
+      expect(current_path).to eq("/mechanics/#{@jon.id}")
+      expect(page).to have_content(@roller.name)
+    end
+  end
 end
