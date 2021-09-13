@@ -12,7 +12,9 @@ describe Mechanic do
       duy = Mechanic.create!(name: "Duy", experience: 3)
       kathy = Mechanic.create!(name: "Kathy", experience: 4)
 
-      expect(Mechanic.average_experience).to eq(4.0)
+      mechanics = Mechanic.all
+
+      expect(mechanics.average_experience).to eq(4.0)
     end
   end
 
@@ -27,7 +29,7 @@ describe Mechanic do
       RideMechanic.create!(ride: ride_2, mechanic: khoi)
       RideMechanic.create!(ride: ride_3, mechanic: khoi)
 
-      expect(khoi.workin_on).to eq([ride_1, ride_3])
+      expect(khoi.working_on).to eq([ride_1, ride_3])
     end
   end
 end
