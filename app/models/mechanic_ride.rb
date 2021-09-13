@@ -1,0 +1,4 @@
+class MechanicRide < ApplicationRecord
+
+
+end
