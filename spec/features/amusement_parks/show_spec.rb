@@ -16,6 +16,7 @@ RSpec.describe 'the amusement park show page' do
 
     expect(page).to have_content(@park1.name)
     expect(page).to have_content(@park1.price_of_admission)
+    expect(page).to have_content("$12.00")
   end
 
   it "lists the park's rides' names in alphabetical order" do
