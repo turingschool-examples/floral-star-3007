@@ -6,7 +6,7 @@ class Mechanic < ApplicationRecord
         self.average(:years_experience)
     end
 
-    def work_on_ride(ride_id)
-        MechanicRides.create({ride_id: ride_id, mechanic_id: id})
+    def mech_rides_filter
+        rides.where(open: true).order(thrill_rating: :asc)
     end
 end

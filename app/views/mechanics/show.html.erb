@@ -1,0 +1,13 @@
+<p><%= @mechanic.name %></p>
+<p><%= @mechanic.years_experience %></p>
+<p>Rides Working On:</p>
+<% @rides.each do |ride| %>
+    <p><%= ride.name %></p>
+<% end %>
+
+<%= form_with controller: :mechanic_rides, action: :create, local: true do |f| %>
+  <%= f.label :ride_id, "Assign Ride" %>
+  <%= f.text_field :ride_id, :size => "10" %>
+  <%= f.submit "Assign Ride" %>
+<% end %>
+
