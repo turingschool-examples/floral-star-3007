@@ -33,7 +33,6 @@ RSpec.describe 'mechanic show page' do
   end
 
   it 'can add existing ride for mechanic' do
-    save_and_open_page
     expect(page).to_not have_content(@ride5.name)
 
     fill_in('Ride ID', with: @ride5.id)

@@ -1,0 +1,9 @@
+<%= @park.name %>
+<%= number_to_currency(@park.price_of_admission) %>
+
+<h3>Rides:</h3>
+<ul>
+  <% @ordered_rides.each do |ride|  %>
+    <li><%= ride.name %></li>
+  <% end %>
+</ul>
