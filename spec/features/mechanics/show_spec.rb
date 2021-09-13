@@ -52,7 +52,7 @@ RSpec.describe "Mechanic Show Page" do
       end
     end
 
-    it "displays the rides listed by thrill rating in descending order by that machanic" do
+    it "displays the open rides listed by thrill rating in descending order by that machanic" do
       visit "/mechanics/#{@jon.id}"
 
       expect(@roller.name).to appear_before(@hammer.name)
