@@ -12,6 +12,7 @@ RSpec.describe "amusement park show page" do
 
   it 'has park name, price of admission, all rides listed alphabetically, average thrill rating for all rides' do
     visit "amusement_parks/#{@ki.id}"
+    save_and_open_page
     expect(page).to have_content(@ki.name)
     expect(page).to have_content(@ki.price_of_admission)
     expect(page).to have_content(@beast.name)
