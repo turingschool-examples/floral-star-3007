@@ -1,7 +1,15 @@
 <%= @mechanic.name %>
 <%= @mechanic.years_experience %>
+<ul>
 <% @mechanic.rides.each do |ride| %>
-  <div>
-    <%= ride.name %>
+  <div >
+    <li><h4><%="#{ride.name}"%></h4>
   </div>
 <% end %>
+</ul>
+
+<div id="onlyopen">
+  <%@rides_open.each do |ride| %>
+    <%= ride.name %>
+  <% end %>
+</div>
