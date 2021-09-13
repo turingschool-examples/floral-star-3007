@@ -1,0 +1,16 @@
+<%= @mechanic.name %>
+<%= @mechanic.years_experience %>
+
+<% @sorted_rides.each do|ride| %>
+  <% if ride.open == true %>
+    <%= ride.name %>
+  <% end %>
+<% end %>
+
+<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, local: true do |f| %>
+
+  <%= f.label "Add ride" %>
+  <%= f.text_field "Add ride" %>
+  <%= f.submit "submit" %>
+
+<% end %>
