@@ -4,7 +4,7 @@ RSpec.describe 'the mechanics show page' do
 
     before :each do
       @mech_1 = Mechanic.create!(name: "Bob", years_experience: 7)
-      @mech_2 = Mechanic.create!(name: "Jenny", years_experience:12)
+      @mech_2 = Mechanic.create!(name: "Jenny", years_experience: 12)
     end
 
 
@@ -24,9 +24,9 @@ RSpec.describe 'the mechanics show page' do
     end
   end
 
-  xit "displays the average years of experience for all mechanics" do
+  it "displays the average years of experience for all mechanics" do
     visit '/mechanics'
-
+    
     within('#stats') do
       expect(page).to have_content("Average Experience: 9.5")
     end
