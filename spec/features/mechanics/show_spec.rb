@@ -31,4 +31,15 @@ RSpec.describe 'mechanic show page' do
     expect(@ride3.name).to appear_before(@ride2.name)
     expect(@ride2.name).to appear_before(@ride1.name)
   end
+
+  it 'can add existing ride for mechanic' do
+    save_and_open_page
+    expect(page).to_not have_content(@ride5.name)
+
+    fill_in('Ride ID', with: @ride5.id)
+    click_button('Submit')
+
+    expect(current_path).to eq("/mechanics/#{@mechanic1.id}")
+    expect(page).to have_content(@ride5.name)
+  end
 end
