@@ -30,4 +30,23 @@ RSpec.describe 'mechanics show page' do
     expect(page).to_not have_content(@jamie.name)
     expect(page).to_not have_content(@willie.name)
   end
+
+  it 'has form to add ride to mechanic' do
+    visit "mechanics/#{@willie.id}"
+
+    within("#rides") do
+      expect(page).to_not have_content(@maverick.name)
+    end
+    expect(page).to have_content("Add Ride for Repairs")
+    within("#new-ride") do
+      fill_in("Ride ID" with: "#{@maverick.id}")
+      click_on "Add Ride"
+    end
+
+    expect(current_page).to eq("mechanics/#{@willie.id}")
+
+    within("#rides") do
+      expect(page).to have_content(@maverick.name)
+    end
+  end
 end
