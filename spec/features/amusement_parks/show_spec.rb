@@ -8,7 +8,7 @@ RSpec.describe "amusement park show page" do
     ride3 = hpw.rides.create!(name: "Ferris Wheel", thrill_rating: 2, open: true)
 
     visit "/amusement_parks/#{hpw.id}"
-  
+
     expect(page).to have_content(hpw.name)
     expect(page).to have_content(hpw.price_of_admission)
   end
@@ -24,5 +24,17 @@ RSpec.describe "amusement park show page" do
 
     expect(ride3.name).to appear_before(ride1.name)
     expect(ride1.name).to appear_before(ride2.name)
+  end
+
+  it 'displays the average thrill rating of all rides in the park' do
+    hpw = AmusementPark.create!(name: "Harry Potter World", price_of_admission: 20)
+    ride1 = hpw.rides.create!(name: "Roller Coaster", thrill_rating: 9, open: true)
+    ride2 = hpw.rides.create!(name: "Tea Cups", thrill_rating: 3, open: false)
+    ride3 = hpw.rides.create!(name: "Ferris Wheel", thrill_rating: 2, open: true)
+
+    visit "/amusement_parks/#{hpw.id}"
+    save_and_open_page
+
+    expect(page).to have_content(hpw.average_thrill.round(1))
   end
 end
