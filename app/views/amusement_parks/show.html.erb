@@ -1,0 +1,7 @@
+<p><%= @park.price_of_admission %></p>
+
+<% @sorted_rides.each do |ride| %>
+  <%= ride.name %>
+<% end %>
+
+<%= "average thrill rating: #{@park.average_thrill}" %>
