@@ -10,7 +10,7 @@ RSpec.describe 'the mechanics show page' do
       @kiss_raise      = @speed_land.rides.create!(name: 'The Kiss Raise', thrill_rating: 4, open: true)
       @lightning_racer = @speed_land.rides.create!(name: 'Lightning Racer', thrill_rating: 9, open: false)
       @storm_runner    = @speed_land.rides.create!(name: 'Storm Runner', thrill_rating: 8, open: false)
-      @great_bear      = @speed_land.rides.create!(name: 'The Great Bear', thrill_rating: 6, open: false)
+      @great_bear      = @speed_land.rides.create!(name: 'The Great Bear', thrill_rating: 6, open: true)
 
       @speed     = Mechanic.create!(name: 'Speed Racer', years_experience: 5)
       @trixie    = Mechanic.create!(name: 'Trixie',      years_experience: 4)
@@ -25,7 +25,6 @@ RSpec.describe 'the mechanics show page' do
     end
 
     it 'shows their name, years of experience, and the names of rides theyre working on, in desc order of thrill rating' do
-      save_and_open_page
       expect(page).to have_content('Mechanic: Speed Racer')
       expect(page).to have_content('Years of Experience: 5')
 
@@ -36,6 +35,16 @@ RSpec.describe 'the mechanics show page' do
 
     it 'shows only the rides that are open' do
       expect(page).to_not have_content('Lightning Racer')
+    end
+
+    it 'has a form to add a ride to their workload that takes ride id' do
+      expect(page).to_not have_content('The Great Bear')
+
+      fill_in('ride_id', with: "#{@great_bear.id}")
+      click_button('Add ride by id')
+
+      expect(current_path).to eq("/mechanics/#{@speed.id}")
+      expect(page).to have_content('The Great Bear')
     end
   end
 end

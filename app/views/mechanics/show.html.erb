@@ -7,3 +7,9 @@
     <li><%= ride.name %></li>
   <% end %>
 </ul>
+
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, local: true do |form| %>
+  <%= form.label        :ride_id %>
+  <%= form.number_field :ride_id %>
+  <%= form.submit       'Add ride by id' %>
+<% end %>
