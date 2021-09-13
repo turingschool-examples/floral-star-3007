@@ -42,6 +42,7 @@ RSpec.describe 'the mechanics show page' do
 
   it "can add a ride to a mechanics list" do
     visit "/mechanics/#{@mech_1.id}"
+
     within('#rides') do
       expect(page).to have_content('Kiddie Coaster')
       expect(page).to have_content('Rollercoaster')
@@ -51,8 +52,7 @@ RSpec.describe 'the mechanics show page' do
     within('#add_ride') do
       expect(page).to have_content("Add a ride to workload:")
 
-      expect(find('form')).to have_content('Ride Id')
-      fill_in 'Ride Id', with: @ride_4.id
+      fill_in 'Ride', with: @ride_4.id
       click_button 'Submit'
 
       expect(current_path).to eq("/mechanics/#{@mech_1.id}")
