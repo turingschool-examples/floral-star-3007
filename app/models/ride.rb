@@ -6,4 +6,6 @@ class Ride < ApplicationRecord
   validates :name, presence: true
   validates :thrill_rating, presence: true
   validates :open, inclusion: { in: [true, false] }
+
+  default_scope -> { order(thrill_rating: :desc) }
 end

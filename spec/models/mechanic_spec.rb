@@ -10,4 +10,15 @@ describe Mechanic, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:years_of_experience) }
   end
+
+  describe 'scopes' do
+    describe 'average years of experience' do
+      xit 'returns average years of experience' do
+        mechanic1 = Mechanic.create!(name: "Jason", years_of_experience: 15)
+        mechanic2 = Mechanic.create!(name: "Steven", years_of_experience: 7)
+
+        expect(Mechanic.average_experience).to eq(11)
+      end
+    end
+  end
 end

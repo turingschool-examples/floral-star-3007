@@ -4,4 +4,9 @@ class Mechanic < ApplicationRecord
 
   validates :name, presence: true
   validates :years_of_experience, presence: true
+
+  scope :average_experience, -> { average(:years_of_experience) }
+  # def self.average_experience
+  #   average(:years_of_experience)
+  # end
 end
