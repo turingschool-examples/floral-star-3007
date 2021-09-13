@@ -26,5 +26,17 @@ RSpec.describe Ride do
         expect(Ride.sort_by_thrill_rating).to eq([@twister, @dare_devil, @boggler, @river_cruise])
       end
     end
+
+    describe '#alphabetical_sort' do
+      it 'sorts rides by name alphabetically' do
+        expect(Ride.alphabetical_sort).to eq([@boggler, @dare_devil, @river_cruise, @twister])
+      end
+    end
+
+    describe '#average_thrill_rating' do
+      it 'returns the average' do
+        expect(Ride.average_thrill_rating).to eq(6.75)
+      end
+    end
   end
 end

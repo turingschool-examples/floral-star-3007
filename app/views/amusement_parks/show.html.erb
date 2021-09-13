@@ -1,0 +1,12 @@
+<h1> <%= @park.name %> </h1>
+
+<ul>
+  <li><%= "Price of Admission: $#{@park.price_of_admission}.00" %></li>
+  <li><%= "Rides at #{@park.name}:" %></li>
+  <ul>
+    <%@park.rides.alphabetical_sort.each do |ride| %>
+      <li><%= ride.name %></li>
+    <%end%>
+  </ul>
+  <li><%= "Average Thrill Rating: #{@park.rides.average_thrill_rating}" %>
+</ul>
