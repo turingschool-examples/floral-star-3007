@@ -16,3 +16,10 @@
     <ul><li><%= ride.thrill_rating %></li></ul>
   <% end %>
 </div>
+
+<%= form_with url: mechanic_rides_path, method: :post, local: true do |f|  %>
+  <%= f.label :ride_id %>
+  <%= f.number_field :ride_id %>
+  <%= f.hidden_field :mechanic_id, value: @mechanic.id %>
+  <%= f.submit 'Add' %>
+<% end %>
