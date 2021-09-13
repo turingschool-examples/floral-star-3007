@@ -5,6 +5,6 @@ class MechanicsController < ApplicationController
 
   def show
     @mechanic = Mechanic.find(params[:id])
-    @rides = Ride.open_only
+    @rides = @mechanic.rides.open_only
   end
 end
