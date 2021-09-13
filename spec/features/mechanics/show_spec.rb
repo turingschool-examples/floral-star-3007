@@ -44,5 +44,12 @@ RSpec.describe 'mechanic show page' do
     expect(@boggler.name).to appear_before(@river_cruise.name)
   end
 
+  it 'has a form to add a ride to a mechanics workload' do
+    visit "/mechanics/#{@mechanic_2.id}"
+    expect(page).to have_content("Add a Ride to #{@mechanic_2.name}'s Workload")
+    expect(page).to have_content("Ride id")
+    expect(page).to have_button("Submit")
+  end
+
 
 end

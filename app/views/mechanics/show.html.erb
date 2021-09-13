@@ -10,3 +10,14 @@
       <%end%>
     </ul>
 </ul>
+
+<h3><%= "Add a Ride to #{@mechanic.name}'s Workload" %> </h3>
+
+<%= form_with url:"/mechanics/#{@mechanic.id}", method: :post, local: true do |f| %>
+    <%= f.label :ride_ID%>
+    <%= f.number_field :ride_ID%>
+
+    <%= f.hidden_field :mechanic_id, value: @mechanic.id  %>
+
+    <%= f.submit "Submit" %>
+<%end%>
