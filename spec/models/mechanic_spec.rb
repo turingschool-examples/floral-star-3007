@@ -14,7 +14,7 @@ RSpec.describe Mechanic do
   end
 
   it "only returns a mechanic's rides that are open and ranks them by thrill rating" do
-    park = AmusementPark.create!(name: "State Fair", price_of_admission: 12.99)
+    park = AmusementPark.create!(name: "State Fair", price_of_admission: 12)
     mech1 = Mechanic.create!(name: "Ida Olson", years_experience: 14)
     ride1 = Ride.create!(name: "The Mangler", thrill_rating: 6, open: true, amusement_park_id: park.id)
     ride2 = Ride.create!(name: "Puke-A-Thon", thrill_rating: 8, open: true, amusement_park_id: park.id)

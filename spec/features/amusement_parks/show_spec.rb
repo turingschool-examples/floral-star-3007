@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe 'the amusement park show page' do
   before(:each) do
-    @park1 = AmusementPark.create!(name: "State Fair", price_of_admission: 12.99)
+    @park1 = AmusementPark.create!(name: "State Fair", price_of_admission: 12)
     @ride1 = Ride.create!(name: "The Mangler", thrill_rating: 6, open: true, amusement_park_id: @park1.id)
     @ride2 = Ride.create!(name: "Puke-A-Thon", thrill_rating: 8, open: true, amusement_park_id: @park1.id)
     @ride3 = Ride.create!(name: "Topsy Scurvy", thrill_rating: 3, open: false, amusement_park_id: @park1.id)
@@ -27,7 +27,7 @@ RSpec.describe 'the amusement park show page' do
 
   it "shows the average thrill rating of the rides" do
     visit amusement_park_path(@park1)
-    # save_and_open_page
+  save_and_open_page
     expect(page).to have_content("Average Thrill Rating: 4")
   end
 end

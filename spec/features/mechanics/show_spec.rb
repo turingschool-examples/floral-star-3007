@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe 'the mechanics show page' do
   before(:each) do
-    @park = AmusementPark.create!(name: "State Fair", price_of_admission: 12.99)
+    @park = AmusementPark.create!(name: "State Fair", price_of_admission: 12)
     @mech1 = Mechanic.create!(name: "Ida Olson", years_experience: 14)
     @mech2 = Mechanic.create!(name: "Sarah Carter", years_experience: 10)
     @ride1 = Ride.create!(name: "The Mangler", thrill_rating: 6, open: true, amusement_park_id: @park.id)

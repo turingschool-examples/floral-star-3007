@@ -6,7 +6,7 @@ RSpec.describe AmusementPark do
   end
 
   it "alphabetizes a parks rides" do
-    park = AmusementPark.create!(name: "State Fair", price_of_admission: 12.99)
+    park = AmusementPark.create!(name: "State Fair", price_of_admission: 12)
     ride1 = Ride.create!(name: "The Mangler", thrill_rating: 6, open: true, amusement_park_id: park.id)
     ride2 = Ride.create!(name: "Puke-A-Thon", thrill_rating: 8, open: true, amusement_park_id: park.id)
     ride3 = Ride.create!(name: "Topsy Scurvy", thrill_rating: 3, open: false, amusement_park_id: park.id)
@@ -15,7 +15,7 @@ RSpec.describe AmusementPark do
   end
 
   it "returns the average thrill rating of all the park's rides" do
-    park = AmusementPark.create!(name: "State Fair", price_of_admission: 12.99)
+    park = AmusementPark.create!(name: "State Fair", price_of_admission: 12)
     ride1 = Ride.create!(name: "The Mangler", thrill_rating: 6, open: true, amusement_park_id: park.id)
     ride2 = Ride.create!(name: "Puke-A-Thon", thrill_rating: 8, open: true, amusement_park_id: park.id)
     ride3 = Ride.create!(name: "Topsy Scurvy", thrill_rating: 3, open: false, amusement_park_id: park.id)
