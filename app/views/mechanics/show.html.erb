@@ -3,7 +3,7 @@
 
 <h3>Rides</h3>
 <ul>
-  <% @mechanic.open_rides.each do |ride| %>
+  <% @mechanic.working_on.each do |ride| %>
     <li><%= ride.name %></li>
   <% end %>
 </ul>
