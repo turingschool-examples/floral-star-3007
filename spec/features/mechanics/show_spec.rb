@@ -10,6 +10,10 @@ RSpec.describe 'the mechanics show page' do
     @ride_1 = @park.rides.create!(name: "Kiddie Coaster", thrill_rating: 3, open: true)
     @ride_2 = @park.rides.create!(name: "Rollercoaster", thrill_rating: 7, open: true)
     @ride_3 = @park.rides.create!(name: "Swings", thrill_rating: 5, open: false)
+
+    @mech_ride_1 = MechanicRide.create!(mechanic_id: @mech_1.id, ride_id: @ride_1.id)
+    @mech_ride_2 = MechanicRide.create!(mechanic_id: @mech_1.id, ride_id: @ride_2.id)
+    @mech_ride_3 = MechanicRide.create!(mechanic_id: @mech_1.id, ride_id: @ride_3.id)
   end
 
   it "displays all the mechanics attributes" do
@@ -25,6 +29,8 @@ RSpec.describe 'the mechanics show page' do
     visit "/mechanics/#{@mech_1.id}"
 
     within('#rides') do
+      expect(page).to have_content("Bob's Rides:")
+
       expect(page).to have_content('Kiddie Coaster')
       expect(page).to have_content('Rollercoaster')
       expect(page).to_not have_content('Swings')
