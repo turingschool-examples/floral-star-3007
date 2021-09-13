@@ -24,5 +24,17 @@ RSpec.describe Ride do
         expect(Ride.currently_open_by_thrill).to eq([@fahrenheit, @kiss_raise, @frog_hop])
       end
     end
+
+    describe '.alphabetical' do
+      it 'lists rides alphabetically' do
+        expect(Ride.alphabetical).to eq([@fahrenheit, @lightning_racer, @storm_runner, @frog_hop, @great_bear, @kiss_raise])
+      end
+    end
+
+    describe '.avg_thrill' do
+      it 'returns the average thrill rating of all rides' do
+        expect(Ride.avg_thrill).to eq(6)
+      end
+    end
   end
 end

@@ -12,32 +12,16 @@ RSpec.describe 'the amusement park show page' do
       @storm_runner    = @speed_land.rides.create!(name: 'Storm Runner', thrill_rating: 8, open: false)
       @great_bear      = @speed_land.rides.create!(name: 'The Great Bear', thrill_rating: 6, open: true)
 
-      @speed     = Mechanic.create!(name: 'Speed Racer', years_experience: 5)
-      @trixie    = Mechanic.create!(name: 'Trixie',      years_experience: 4)
-      @chimchim  = Mechanic.create!(name: 'Chim-Chim',   years_experience: 2)
-
-      @speed.rides << @frog_hop
-      @speed.rides << @kiss_raise
-      @speed.rides << @fahrenheit
-      @speed.rides << @lightning_racer
-
       visit "/amusement_parks/#{@speed_land.id}"
     end
 
     it 'has the name and price of admission' do
       expect(page).to have_content('Speed Land')
-      expect(page).to have_content('Price of Admission: $50')
+      expect(page).to have_content('Admissions: $50.00')
+    end
+
+    it 'has the average thrill rating of all rides' do
+      expect(page).to have_content('Average Thrill Rating of Rides: 6.0/10')
     end
   end
 end
-
-# And I see the names of all the rides that are at that theme park listed in alphabetical order
-# And I see the average thrill rating of this amusement park’s rides
-# Ex: Hershey Park
-#    Admissions: $50.00
-#
-#    Rides:
-#           1. Lightning Racer
-#           2. Storm Runner
-#           3. The Great Bear
-#    Average Thrill Rating of Rides: 7.8/10
