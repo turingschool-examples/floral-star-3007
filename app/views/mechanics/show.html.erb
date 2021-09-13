@@ -1,0 +1,8 @@
+<%= @mechanic.name %>
+<%= @mechanic.years_experience %>
+
+<% @sorted_rides.each do|ride| %>
+  <% if ride.open == true %>
+    <%= ride.name %>
+  <% end %>
+<% end %>
