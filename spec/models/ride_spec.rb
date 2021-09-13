@@ -17,5 +17,9 @@ RSpec.describe Ride, type: :model do
     it 'orders by thrill descending' do
       expect(Ride.order_by_thrill).to eq([@millenium, @topthrill, @maverick])
     end
+
+    it '#average_thrill' do
+      expect(Ride.average_thrill).to eq(9)
+    end
   end
 end
