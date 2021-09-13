@@ -37,7 +37,6 @@ RSpec.describe "Mechanics Show Page" do
       mechanic_1.rides.create!(name: 'The Blade', thrill_rating: 100, open: true, amusement_park_id: six_flags.id)
 
       visit "/mechanics/#{mechanic_1.id}"
-      save_and_open_page
 
       expect(page).to have_content("Ferris Wheel")
       expect(page).to have_content("The Blade")
@@ -46,6 +45,36 @@ RSpec.describe "Mechanics Show Page" do
       expect(page).to_not have_content("Roller Coaster")
       expect(page).to_not have_content(200)
       expect(mechanic_1.rides.last.name).to appear_before(mechanic_1.rides.first.name)
+    end
+
+    it "has a form to add a ride" do
+      six_flags = AmusementPark.create!(name: "Six Flags", price_of_admission: 100)
+      mechanic_1 = Mechanic.create!(name: 'Kevin Mugele', years_of_experience: 11)
+      mechanic_1.rides.create!(name: 'Ferris Wheel', thrill_rating: 40, open: true, amusement_park_id: six_flags.id)
+      mechanic_1.rides.create!(name: 'Roller Coaster', thrill_rating: 200, open: false, amusement_park_id: six_flags.id)
+      mechanic_1.rides.create!(name: 'The Blade', thrill_rating: 100, open: true, amusement_park_id: six_flags.id)
+
+      visit "/mechanics/#{mechanic_1.id}"
+      # save_and_open_page
+      expect(page).to have_content("Ride ID:")
+    end
+
+    it "allows you to enter id into form" do
+      six_flags = AmusementPark.create!(name: "Six Flags", price_of_admission: 100)
+      mechanic_1 = Mechanic.create!(name: 'Kevin Mugele', years_of_experience: 11)
+      ride_1 = mechanic_1.rides.create!(name: 'Ferris Wheel', thrill_rating: 40, open: true, amusement_park_id: six_flags.id)
+      ride_2 = mechanic_1.rides.create!(name: 'Roller Coaster', thrill_rating: 200, open: false, amusement_park_id: six_flags.id)
+      ride_3 = mechanic_1.rides.create!(name: 'The Blade', thrill_rating: 100, open: true, amusement_park_id: six_flags.id)
+      ride_4 = Ride.create!(name: 'Speed', thrill_rating: 10000, open: true, amusement_park_id: six_flags.id)
+
+      visit "/mechanics/#{mechanic_1.id}"
+
+      expect(page).to_not have_content("#{ride_4.name}")
+
+      fill_in 'Ride ID', with: "#{ride_4.id}"
+      click_on("Submit")
+
+      expect(page).to have_content(ride_4.name)
     end
   end
 end

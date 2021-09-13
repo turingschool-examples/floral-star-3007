@@ -7,4 +7,12 @@ class Ride < ApplicationRecord
     where(open: true)
     .order(thrill_rating: :desc)
   end
+
+  def self.alphabetical_order
+    order(:name)
+  end
+
+  def self.average_thrill_rating
+    average(:thrill_rating)
+  end
 end
