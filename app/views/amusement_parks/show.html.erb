@@ -1,0 +1,6 @@
+<h1><%= @park.name %></h1>
+<h4>Admission price: $<%= '%.2f' % @park.price_of_admission %></h4>
+<p>Rides:</p>
+<% @park.rides_alphabetically.each do |ride|%>
+  <p><%= ride.name %></p>
+<% end %>
