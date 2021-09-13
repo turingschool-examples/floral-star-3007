@@ -1,5 +1,5 @@
 class Mechanic < ApplicationRecord
-  has_many :ride_mechanics
+  has_many :ride_mechanics, dependent: :delete_all
   has_many :rides, through: :ride_mechanics
 
   def self.ave_experience
