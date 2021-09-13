@@ -9,12 +9,21 @@ RSpec.describe 'mechanic index page' do
     visit '/mechanics'
     save_and_open_page
 
-    expect(page).to have_content(mechanic1.name)
-    expect(page).to have_content(mechanic2.name)
-    expect(page).to have_content(mechanic3.name)
-    expect(page).to have_content(mechanic3.years_of_experience)
-    expect(page).to have_content(mechanic2.years_of_experience)
-    expect(page).to have_content(mechanic1.years_of_experience)
+    within "#mechanic-#{mechanic1.id}" do
+      expect(page).to have_content(mechanic1.name)
+      expect(page).to have_content(mechanic1.years_of_experience)
+    end
+
+    within "#mechanic-#{mechanic2.id}" do
+      expect(page).to have_content(mechanic2.name)
+      expect(page).to have_content(mechanic2.years_of_experience)
+    end
+
+    within "#mechanic-#{mechanic3.id}" do
+      expect(page).to have_content(mechanic3.name)
+      expect(page).to have_content(mechanic3.years_of_experience)
+    end
+
     expect(page).to have_content("Average years of experience across all mechanics: 15.0")
   end
 end
