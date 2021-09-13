@@ -28,7 +28,7 @@ RSpec.describe 'the amusement park show page' do
 
   it "shows the average thrill rating of the rides" do
     visit amusement_park_path(@park1)
-  save_and_open_page
+    #save_and_open_page
     expect(page).to have_content("Average Thrill Rating: 4/10")
   end
 end
