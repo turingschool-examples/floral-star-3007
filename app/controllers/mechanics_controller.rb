@@ -5,11 +5,11 @@ class MechanicsController < ApplicationController
 
   def show
     @mechanic = Mechanic.find(params[:id])
+    @rides = Ride.order_by_thrill
   end
 
   private
   def mechanic_params
     params.permit(:name, :experience)
   end
-
 end
