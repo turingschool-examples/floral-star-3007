@@ -3,4 +3,10 @@
 <ul>
   <li><%= "Name: #{@mechanic.name}" %></li>
   <li><%= "Years Experience: #{@mechanic.experience}" %></li>
+  <li><%= "Rides #{@mechanic.name} is working on:" %>
+    <ul>
+      <% @rides.each do |ride| %>
+        <li><%= ride.name %></li>
+      <%end%>
+    </ul>
 </ul>
