@@ -51,5 +51,15 @@ RSpec.describe 'mechanic show page' do
     expect(page).to have_button("Submit")
   end
 
+  it 'adds the ride to the mechanics ride list' do
+    visit "/mechanics/#{@mechanic_2.id}"
+
+    fill_in "Ride id", with: @river_cruise.id
+    click_button "Submit"
+
+    expect(current_path).to eq("/mechanics/#{@mechanic_2.id}")
+    expect(page).to have_content(@river_cruise.name)
+  end
+
 
 end
