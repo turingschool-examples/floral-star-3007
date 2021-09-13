@@ -4,5 +4,9 @@ class Mechanic < ApplicationRecord
 
   def self.avg_exp
     average(:years_experience)
-  end 
+  end
+
+  def open_rides
+    rides.open
+  end
 end
