@@ -32,5 +32,17 @@ RSpec.describe 'mechanic show' do
         end
       end
     end
+
+    describe 'adding a ride' do
+      let!(:ride4) { Ride.create!(name: 'New Ride', thrill_rating: 123, open: false, amusement_park_id: park.id) }
+
+      it 'has a form that adds a ride to its workload' do
+        fill_in :ride_id, with: ride4.id
+        click_button 'Add'
+
+        expect(current_path).to eq(mechanic_path(mech1))
+        expect(page).to have_content(ride4.name)
+      end
+    end
   end
 end
