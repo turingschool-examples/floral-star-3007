@@ -43,6 +43,5 @@ RSpec.describe 'Mechanic show page' do
     click_button('Add Ride')
     expect(page).to have_content(@ride_2.name)
     expect(current_path).to eq("/mechanics/#{@sam.id}")
-    save_and_open_page
   end
 end
