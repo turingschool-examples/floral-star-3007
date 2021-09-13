@@ -1,5 +1,5 @@
 <h1><%= @park.name %></h1>
-<h3>Entry fee: <%= @park.price_of_admission %></h3>
+<h3>Entry fee: <%= number_to_currency(@park.price_of_admission) %></h3>
 <ul>Rides: <% @park_rides.each do |ride| %>
   <li><%= ride.name %></li>
   <% end %></ul>
