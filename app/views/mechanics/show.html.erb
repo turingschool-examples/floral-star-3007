@@ -1,0 +1,17 @@
+<h3>Mechanic: <%= @mechanic.name %></h3>
+<p>Years Experience: <%= @mechanic.yrs_xp %></p>
+<p id="rides">Current rides they're working on:<br>
+<% @ordered_rides.each do |ride| %>
+  <% if ride.open %>
+    <%= ride.name %><br>
+  <% end %>
+<% end %>
+</p>
+<p>Add a ride to workload:</p>
+<div id="new-ride">
+  <%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, local: true do |f| %>
+    <%= f.label :ride_id, "Ride Id" %>
+    <%= f.number_field :ride_id %>
+    <%= f.submit "Add Ride" %>
+  <% end %>
+</div>
