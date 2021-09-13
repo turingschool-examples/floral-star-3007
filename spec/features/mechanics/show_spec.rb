@@ -21,4 +21,12 @@ RSpec.describe 'Mechanic show page' do
     expect(page).to have_content(@ride_2.name)
     expect(page).to_not have_content(@ride_3.name)
   end
+
+  xit 'only shows rides that are open' do
+    visit "/mechanics/#{@sam.id}"
+    expect(page).to have_content(@sam.name)
+    expect(page).to have_content(@sam.years_experience)
+    expect(page).to have_content(@ride_1.name)
+    expect(page).to_not have_content(@ride_3.name)
+  end
 end
