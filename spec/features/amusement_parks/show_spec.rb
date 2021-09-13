@@ -18,4 +18,16 @@ RSpec.describe 'the amusement park show page' do
     expect(page).to have_content(@park1.price_of_admission)
   end
 
-end 
+  it "lists the park's rides' names in alphabetical order" do
+    visit amusement_park_path(@park1)
+
+    expect(@ride5.name).to appear_before(@ride1.name)
+    expect(@ride4.name).to appear_before(@ride2.name)
+  end
+
+  it "shows the average thrill rating of the rides" do
+    visit amusement_park_path(@park1)
+
+    expect(page).to have_content("Average Thrill Rating: 4")
+  end
+end
