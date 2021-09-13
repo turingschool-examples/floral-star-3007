@@ -2,8 +2,6 @@ require 'rails_helper'
 # rspec spec/features/mechanics/index_spec.rb
 RSpec.describe 'Mechanic Index Page' do
   before :each do
-    # @fun_park = AmusementPark.create!(name: "Fun Park", price_of_admission: 10)
-    # @best_ride = fun_park.rides.create!(name: "Best Ride", thrill_rating: 2, open: true)
     @sara = Mechanic.create!(name: "Sara", experience: 20)
     @fred = Mechanic.create!(name: "Fred", experience: 10)
 
@@ -21,7 +19,6 @@ RSpec.describe 'Mechanic Index Page' do
 
   describe 'display average years of experience' do
     it 'calcs the average years of experience across all mechanics' do
-
       expect(page).to have_content("Average years of experience: 15")
     end
   end
